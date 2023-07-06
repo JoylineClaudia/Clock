@@ -1,196 +1,504 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>
-            Clock Timer
-        </title>
-        <link rel="stylesheet" href="./css/main.css"/>
-        <link rel="stylesheet" href="./css/bootstrap.css"/>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock Timer</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+  </head>
 
+  <body>
+    <nav class="navbar bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <div class="d-flex">
+            <img src="./images/clock.png" alt="Clock" width="50" height="50" />
 
-    </head>
-    <body>
+            <h2 class="text-white p-2 fw-bolder">Clock</h2>
+          </div>
+        </a>
 
-        <nav class="navbar bg-primary">
-            <div class="container">
-                <a
-                    class="navbar-brand" href="#">
-                    <div class="d-flex">
-                        <img src="./images/clock.png" alt="Clock" width="50" height="50">
-            
-                        <h2 class="text-white p-2 fw-bolder">Clock</h2>
-                      </div>
+        <ul class="nav justify-content-end">
+          <li class="nav-item fs-5">
+            <a class="text-white nav-link" href="#"> Holidays </a>
+          </li>
+
+          <li class="nav-item fs-5 dropdown" id="dropdownMenuButton1">
+            <a
+              class="nav-link text-white dropdown-toggle"
+              data-bs-toggle="dropdown"
+              href="#"
+              role="button"
+              aria-expanded="false">
+              Tools
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <a class="dropdown-item" href="index.html"> Alarm Clock </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="stopwatch.html"> Stopwatch </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="timer.html"> Timer </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="time.html"> Clock </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item" id="toggle-btn">
+            <a class="nav-link text-white" href="#">
+              <i class="bi bi-toggle-off fs-4"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">
+              <i class="bi bi-gear fs-4"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Sidebar -->
+    <div class="sidebar container-fluid">
+      <div class="row">
+        <div class="col-sm-auto col-md-1 px-0 sticky-top bg-dark">
+          <div
+            class="d-flex flex-sm-column flex-row flex-nowrap align-items-center sticky-top">
+            <ul
+              class="nav nav-pills nav-flush flex-sm-column w-100 flex-row flex-nowrap mb-auto text-center align-items-center">
+              <li class="w-100">
+                <a href="index.html" class="nav-link text-white">
+                  <i class="bi bi-alarm fs-2"></i>
+
+                  <p>Alaram Clock</p>
                 </a>
+              </li>
+              <li class="active w-100">
+                <a href="timer.html" class="nav-link text-white">
+                  <i class="bi bi-clock-history fs-2"></i>
+                  <p>Timer</p>
+                </a>
+              </li>
+              <li class="w-100">
+                <a href="stopwatch.html" class="nav-link text-white">
+                  <i class="bi bi-stopwatch fs-2"></i>
+                  <p>Stopwatch</p>
+                </a>
+              </li>
 
-                <ul class="nav justify-content-end">
-
-                    <li class="nav-item fs-5">
-                        <a class="text-white nav-link" href="#">
-                            Holidays
-                        </a>
-                    </li>
-
-
-                    <li class="nav-item fs-5 dropdown" id="dropdownMenuButton1">
-                        <a class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                            Tools
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li>
-                                <a class="dropdown-item" href="index.html">
-                                    Alarm Clock
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="stopwatch.html">
-                                    Stopwatch
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="timer.html">
-                                    Timer
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="time.html">
-                                    Clock
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item" id="toggle-btn">
-                        <a class="nav-link text-white" href="#">
-                            <i class="bi bi-toggle-off fs-4"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">
-                            <i class="bi bi-gear fs-4"></i>
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-
-
-        </nav>
-        <!-- Sidebar -->
-        <div class="sidebar container-fluid ">
-            <div class="row">
-                <div class="col-sm-auto col-md-1 px-0 sticky-top bg-dark">
-                    <div class="d-flex flex-sm-column flex-row flex-nowrap align-items-center sticky-top">
-
-                        <ul class="nav nav-pills nav-flush flex-sm-column w-100 flex-row flex-nowrap mb-auto text-center align-items-center">
-                            <li class="w-100">
-                                <a href="index.html" class="nav-link text-white">
-                                    <i class="bi bi-alarm fs-2"></i>
-
-                                    <p>
-                                        Alaram Clock
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="active w-100">
-                                <a href="timer.html" class="nav-link text-white">
-                                    <i class="bi bi-clock-history fs-2"></i>
-                                    <p>
-                                        Timer
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="w-100">
-                                <a href="stopwatch.html" class="nav-link text-white">
-                                    <i class="bi bi-stopwatch fs-2"></i>
-                                    <p>
-                                        Stopwatch
-                                    </p>
-
-                                </a>
-                            </li>
-
-                            <li class="w-100">
-                                <a href="time.html" class="nav-link text-white">
-                                    <i class="bi bi-clock fs-2"></i>
-                                    <p>
-                                        Time
-                                    </p>
-                                </a>
-                            </li>
-
-
-                        </ul>
-
-                    </div>
-                </div>
-                <div class="col-sm p-3 min-vh-100 bg-body-tertiary">
-                    <!-- content -->
-                    <div class="d-flex align-items-center justify-content-center">
-                        <div class="clock-container container bg-white"  id="clock-container">
-                            <div class="d-flex align-items-center justify-content-end mt-3 ">
-                                <button class="bg-white border-0 px-2" onclick="var el = document.getElementById('clock-container'); el.requestFullscreen();">
-                                  <i class="bi bi-arrows-fullscreen"></i>
-                                </button>
-                              </div>
-
-                            <p class="clock-time text-center text-secondary mt-2">
-                                11.50
-                               
-                            </p>
-
-                            <div class="d-flex justify-content-center my-5 ">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    Set Timer
-                                </button>
-                            </div>
-
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header bg-primary">
-                                    <h5 class="modal-title text-white" id="exampleModalLabel">Edit Alarm</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                    ...
-                                    </div>
-                                    <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="button" class="btn btn-primary">Start</button>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
+              <li class="w-100">
+                <a href="time.html" class="nav-link text-white">
+                  <i class="bi bi-clock fs-2"></i>
+                  <p>Time</p>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
+        <div class="col-sm p-3 min-vh-100 bg-body-tertiary">
+          <!-- content -->
+          <div class="d-flex align-items-center justify-content-center">
+            <div
+              class="clock-container container bg-white"
+              id="clock-container">
+              <div class="d-flex align-items-center justify-content-end mt-3">
+                <button
+                  class="bg-white border-0 px-2"
+                  onclick="var el = document.getElementById('clock-container'); el.requestFullscreen();">
+                  <i class="bi bi-arrows-fullscreen"></i>
+                </button>
+              </div>
 
-        <!-- /#sidebar -->
+              <p
+                class="clock-time text-center text-secondary mt-2"
+                style="font-size: 4rem !important"
+                id="timer__displayTitle"></p>
+              <p
+                class="clock-time text-center text-secondary mt-2"
+                id="timer__clock"></p>
 
+              <div class="d-flex justify-content-center my-5">
+                <button
+                  type="button"
+                  class="btn btn-primary mx-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  id="timer__editTimerBtn">
+                  Set Timer
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary mx-1 px-3"
+                  id="timer__resetBtn">
+                  Reset
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-success mx-1 px-3"
+                  id="timer__startBtn">
+                  Start
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-danger mx-1 px-3"
+                  id="timer__stopBtn">
+                  Stop
+                </button>
+              </div>
 
-        <!--Main Navigation-->
+              <audio id="timer__alert">
+                <source src="./alarm.mp3" type="audio/mpeg" />
+              </audio>
 
-        <script>
-            // Get the toggle button element
-            const toggleButton = document.getElementById('toggle-btn');
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                      <h5 class="modal-title text-white" id="exampleModalLabel">
+                        Edit Alarm
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form
+                        id="timer__inputForm"
+                        onsubmit="timer__getFormInput(event)">
+                        <div class="row">
+                          <div class="col-11 mx-auto">
+                            <label class="form-label" for="timer__inputTitle"
+                              >Title</label
+                            >
+                            <input
+                              class="form-control"
+                              placeholder="Title"
+                              type="text"
+                              name="timer__inputTitle"
+                              id="timer__inputTitle" />
+                          </div>
+                        </div>
+                        <div class="row mt-3">
+                          <div class="ms-3 col-3">
+                            <label class="form-label px-4" for="timer__inputHH"
+                              >Hours</label
+                            >
+                            <select
+                              class="form-select mx-2"
+                              aria-label="Default select"
+                              name="timer__inputHH"
+                              id="timer__inputHH">
+                              <option value="0">0</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                              <option value="11">11</option>
+                              <option value="12">12</option>
+                              <option value="13">13</option>
+                              <option value="14">14</option>
+                              <option value="15">15</option>
+                              <option value="16">16</option>
+                              <option value="17">17</option>
+                              <option value="18">18</option>
+                              <option value="19">19</option>
+                              <option value="20">20</option>
+                              <option value="21">21</option>
+                              <option value="22">22</option>
+                              <option value="23">23</option>
+                              <option value="24">24</option>
+                              <option value="25">25</option>
+                              <option value="26">26</option>
+                              <option value="27">27</option>
+                              <option value="28">28</option>
+                              <option value="29">29</option>
+                              <option value="30">30</option>
+                              <option value="31">31</option>
+                              <option value="32">32</option>
+                              <option value="33">33</option>
+                              <option value="34">34</option>
+                              <option value="35">35</option>
+                              <option value="36">36</option>
+                              <option value="37">37</option>
+                              <option value="38">38</option>
+                              <option value="39">39</option>
+                              <option value="40">40</option>
+                              <option value="41">41</option>
+                              <option value="42">42</option>
+                              <option value="43">43</option>
+                              <option value="44">44</option>
+                              <option value="45">45</option>
+                              <option value="46">46</option>
+                              <option value="47">47</option>
+                              <option value="48">48</option>
+                              <option value="49">49</option>
+                              <option value="50">50</option>
+                              <option value="51">51</option>
+                              <option value="52">52</option>
+                              <option value="53">53</option>
+                              <option value="54">54</option>
+                              <option value="55">55</option>
+                              <option value="56">56</option>
+                              <option value="57">57</option>
+                              <option value="58">58</option>
+                              <option value="59">59</option>
+                              <option value="60">60</option>
+                              <option value="61">61</option>
+                              <option value="62">62</option>
+                              <option value="63">63</option>
+                              <option value="64">64</option>
+                              <option value="65">65</option>
+                              <option value="66">66</option>
+                              <option value="67">67</option>
+                              <option value="68">68</option>
+                              <option value="69">69</option>
+                              <option value="70">70</option>
+                              <option value="71">71</option>
+                              <option value="72">72</option>
+                              <option value="73">73</option>
+                              <option value="74">74</option>
+                              <option value="75">75</option>
+                              <option value="76">76</option>
+                              <option value="77">77</option>
+                              <option value="78">78</option>
+                              <option value="79">79</option>
+                              <option value="80">80</option>
+                              <option value="81">81</option>
+                              <option value="82">82</option>
+                              <option value="83">83</option>
+                              <option value="84">84</option>
+                              <option value="85">85</option>
+                              <option value="86">86</option>
+                              <option value="87">87</option>
+                              <option value="88">88</option>
+                              <option value="89">89</option>
+                              <option value="90">90</option>
+                              <option value="91">91</option>
+                              <option value="92">92</option>
+                              <option value="93">93</option>
+                              <option value="94">94</option>
+                              <option value="95">95</option>
+                              <option value="96">96</option>
+                              <option value="97">97</option>
+                              <option value="98">98</option>
+                              <option value="99">99</option>
+                            </select>
+                          </div>
 
-            // Add event listener to handle the toggle button click
-            toggleButton.addEventListener('click', function () { // Toggle the 'dark-mode' class on the body element
-                document.body.classList.toggle('dark-mode');
-            });
-        </script>
+                          <div class="mx-auto col-3">
+                            <label class="form-label px-4" for="timer__inputMM"
+                              >Minutes</label
+                            >
+                            <select
+                              class="form-select mx-2"
+                              aria-label="Default select"
+                              name="timer__inputMM"
+                              id="timer__inputMM">
+                              <option value="0">0</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                              <option value="11">11</option>
+                              <option value="12">12</option>
+                              <option value="13">13</option>
+                              <option value="14">14</option>
+                              <option value="15">15</option>
+                              <option value="16">16</option>
+                              <option value="17">17</option>
+                              <option value="18">18</option>
+                              <option value="19">19</option>
+                              <option value="20">20</option>
+                              <option value="21">21</option>
+                              <option value="22">22</option>
+                              <option value="23">23</option>
+                              <option value="24">24</option>
+                              <option value="25">25</option>
+                              <option value="26">26</option>
+                              <option value="27">27</option>
+                              <option value="28">28</option>
+                              <option value="29">29</option>
+                              <option value="30">30</option>
+                              <option value="31">31</option>
+                              <option value="32">32</option>
+                              <option value="33">33</option>
+                              <option value="34">34</option>
+                              <option value="35">35</option>
+                              <option value="36">36</option>
+                              <option value="37">37</option>
+                              <option value="38">38</option>
+                              <option value="39">39</option>
+                              <option value="40">40</option>
+                              <option value="41">41</option>
+                              <option value="42">42</option>
+                              <option value="43">43</option>
+                              <option value="44">44</option>
+                              <option value="45">45</option>
+                              <option value="46">46</option>
+                              <option value="47">47</option>
+                              <option value="48">48</option>
+                              <option value="49">49</option>
+                              <option value="50">50</option>
+                              <option value="51">51</option>
+                              <option value="52">52</option>
+                              <option value="53">53</option>
+                              <option value="54">54</option>
+                              <option value="55">55</option>
+                              <option value="56">56</option>
+                              <option value="57">57</option>
+                              <option value="58">58</option>
+                              <option value="59">59</option>
+                            </select>
+                          </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+                          <div class="me-4 col-3">
+                            <label class="form-label px-4" for="timer__inputSS"
+                              >Seconds</label
+                            >
+                            <select
+                              class="form-select mr-3"
+                              aria-label="Default select"
+                              name="timer__inputSS"
+                              id="timer__inputSS">
+                              <option value="0">0</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                              <option value="11">11</option>
+                              <option value="12">12</option>
+                              <option value="13">13</option>
+                              <option value="14">14</option>
+                              <option value="15">15</option>
+                              <option value="16">16</option>
+                              <option value="17">17</option>
+                              <option value="18">18</option>
+                              <option value="19">19</option>
+                              <option value="20">20</option>
+                              <option value="21">21</option>
+                              <option value="22">22</option>
+                              <option value="23">23</option>
+                              <option value="24">24</option>
+                              <option value="25">25</option>
+                              <option value="26">26</option>
+                              <option value="27">27</option>
+                              <option value="28">28</option>
+                              <option value="29">29</option>
+                              <option value="30">30</option>
+                              <option value="31">31</option>
+                              <option value="32">32</option>
+                              <option value="33">33</option>
+                              <option value="34">34</option>
+                              <option value="35">35</option>
+                              <option value="36">36</option>
+                              <option value="37">37</option>
+                              <option value="38">38</option>
+                              <option value="39">39</option>
+                              <option value="40">40</option>
+                              <option value="41">41</option>
+                              <option value="42">42</option>
+                              <option value="43">43</option>
+                              <option value="44">44</option>
+                              <option value="45">45</option>
+                              <option value="46">46</option>
+                              <option value="47">47</option>
+                              <option value="48">48</option>
+                              <option value="49">49</option>
+                              <option value="50">50</option>
+                              <option value="51">51</option>
+                              <option value="52">52</option>
+                              <option value="53">53</option>
+                              <option value="54">54</option>
+                              <option value="55">55</option>
+                              <option value="56">56</option>
+                              <option value="57">57</option>
+                              <option value="58">58</option>
+                              <option value="59">59</option>
+                            </select>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                        Cancel
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-primary px-4 me-3"
+                        data-bs-dismiss="modal"
+                        onclick="timer__getFormInput(event)">
+                        Start
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    </body>
+    <!-- /#sidebar -->
+
+    <!--Main Navigation-->
+
+    <script src="timer.js"></script>
+
+    <script>
+      // Get the toggle button element
+      const toggleButton = document.getElementById("toggle-btn");
+
+      // Add event listener to handle the toggle button click
+      toggleButton.addEventListener("click", function () {
+        // Toggle the 'dark-mode' class on the body element
+        document.body.classList.toggle("dark-mode");
+      });
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"></script>
+  </body>
 </html>
