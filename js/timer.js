@@ -25,6 +25,7 @@ const timer__inputTitle = document.querySelector("#timer__inputTitle");
 
 //alert audio
 const timer__alert = document.querySelector("#timer__alert");
+timer__alert.loop = true;
 
 //format the output
 const timer__formatOutput = (totalSeconds) => {
