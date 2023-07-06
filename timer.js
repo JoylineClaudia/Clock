@@ -137,10 +137,9 @@ const timer__getFormInput = (event) => {
   timer__resetTimer();
   timer__setTitle(timer.title);
   timer__setTime(timer.totalSeconds);
-  timer__startTimer();
-
-  //close dialog
-  timer__closeDialog();
+  console.log(timer.totalSeconds);
+  if (timer.totalSeconds == 0) timer__setBtn(true, true);
+  else timer__startTimer();
 };
 
 const timer__storeTimer = () => {
@@ -150,6 +149,8 @@ const timer__storeTimer = () => {
 //get previous timer from local storage
 const timer__reloadTimer = () => {
   const localTimer = JSON.parse(localStorage.getItem("timer"));
+  console.log(localTimer);
+  console.log(typeof localTimer);
   Object.assign(timer, localTimer);
   console.log(timer);
   if (timer.runFlag) {
@@ -166,6 +167,7 @@ const timer__reloadTimer = () => {
 //initalization
 (function init() {
   timer__reloadTimer();
+  if (timer.totalSeconds == 0) timer__setBtn(true, true);
   timer__setTitle(timer.title);
   timer__setTime(timer.remSeconds);
 })();
