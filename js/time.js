@@ -102,10 +102,8 @@ function getDiff(timezone){
   let minDiff = totalUserMin-totalCountryMin
   let diffHour = Math.round(minDiff/60)
   let diffMin = minDiff%60;
-  diffHour  = diffHour<10? "0"+diffHour : diffHour
-  diffMin  = diffMin<10? "0"+diffMin : diffMin
 
-  return `${diffHour}:${diffMin}`
+  return `${diffHour}:${Math.abs(diffMin)}`
 }
 
 
