@@ -186,7 +186,7 @@ function detectLocalStorageChanges() {
         timezoneDiff.innerHTML = getDiff(ct.getTimezone(ele))
         setInterval(() => {
           let result = getTime(ct.getTimezone(ele));
-          timezoneTime.innerHTML = result.currentTime;
+          timezoneTime.innerHTML = result;
           
         }, 1000);
         parentContainer.appendChild(clone);
