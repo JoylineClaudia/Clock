@@ -423,7 +423,14 @@
       
       // Add event listener to handle the toggle button click
       
-      
+      window.addEventListener("load",()=> {
+      const darkThemeToggle = localStorage.getItem("darkTheme") || "false";
+        if (darkThemeToggle == "true") {
+      document.body.classList.add("dark-mode");
+      } else {
+        document.body.classList.remove("dark-mode");
+        }
+        });
       
       
       toggleButton.addEventListener("click", function () {
