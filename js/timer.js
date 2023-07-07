@@ -6,6 +6,8 @@ const timer = {
   runFlag: false,
 };
 
+const windowtitle = document.querySelector("title");
+
 //display timer element
 const timer__displayTitle = document.querySelector("#timer__displayTitle");
 const timer__clock = document.querySelector("#timer__clock");
@@ -59,7 +61,10 @@ const timer__setTitle = (title) => {
 
 //set time
 const timer__setTime = (seconds) => {
-  timer__clock.innerText = timer__formatOutput(seconds);
+  const formatedtime = timer__formatOutput(seconds);
+  timer__clock.innerText = formatedtime;
+  windowtitle.innerText = `${formatedtime} - timer`;
+
   let progress = (100 * timer.remSeconds) / timer.totalSeconds;
   timer__progress.style.width = `${progress}%`;
 
@@ -68,6 +73,7 @@ const timer__setTime = (seconds) => {
   else if (progress > 10 && progress <= 35)
     timer__progress.style.backgroundColor = "#cccc01";
   else timer__progress.style.backgroundColor = "#13ab00";
+
   timer__storeTimer();
 };
 
@@ -94,6 +100,9 @@ const timer__startTimer = () => {
       timer__totalSeconds.innerText = timer__formatOutput(timer.totalSeconds);
       timer__dialogTitle.innerText = timer.title ? timer.title : "---";
       timer__alertBtn.click();
+      windowtitle.innerText = `*** ${timer__formatOutput(
+        timer.totalSeconds
+      )} ***`;
       timer__alert.play();
     }, timeout * 1000);
   }
