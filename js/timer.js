@@ -10,11 +10,15 @@ const timer = {
 const timer__displayTitle = document.querySelector("#timer__displayTitle");
 const timer__clock = document.querySelector("#timer__clock");
 
+const timer__totalSeconds = document.querySelector("#timer__totalSeconds");
+const timer__dialogTitle = document.querySelector("#timer__dialogTitle");
+
 //buttons elememt
 const timer__startBtn = document.querySelector("#timer__startBtn");
 const timer__stopBtn = document.querySelector("#timer__stopBtn");
 const timer__resetBtn = document.querySelector("#timer__resetBtn");
 const timer__editTimerBtn = document.querySelector("#timer__editTimerBtn");
+const timer__alertBtn = document.querySelector("#timer__alertBtn");
 
 //form element
 const timer__inputForm = document.querySelector("#timer__inputForm");
@@ -77,6 +81,9 @@ const timer__startTimer = () => {
       console.log("timeout");
       timer__initTimer();
       timer__setTime(0);
+      timer__totalSeconds.innerText = timer__formatOutput(timer.totalSeconds);
+      timer__dialogTitle.innerText = timer.title ? timer.title : "---";
+      timer__alertBtn.click();
       timer__alert.play();
     }, timeout * 1000);
   }
@@ -95,12 +102,6 @@ const timer__stopTimer = () => {
   timer__initTimer();
   timer.runFlag = false;
   timer__setBtn(false, true);
-
-  if (timer.remSeconds == 0) {
-    timer__alert.pause();
-    timer__setBtn(true, true);
-    timer.runFlag = false;
-  }
   timer__setTime(timer.remSeconds);
 };
 timer__stopBtn.addEventListener("click", timer__stopTimer);
@@ -115,6 +116,14 @@ const timer__resetTimer = () => {
 };
 timer__resetBtn.addEventListener("click", timer__resetTimer);
 
+const timer__stopAlert = (restart) => {
+  timer__alert.pause();
+  timer__setBtn(false, true);
+  timer__resetTimer();
+  if (restart) timer__startTimer();
+  timer.runFlag = false;
+  return;
+};
 //get form input
 const timer__getFormInput = (event) => {
   event.preventDefault();
