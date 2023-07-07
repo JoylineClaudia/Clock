@@ -167,7 +167,115 @@
                   Stop
                 </button>
               </div>
-
+  <div class="container">
+                <h2 class="text-center mt-5 pt-5">
+                  Set the timer for the specified time
+                </h2>
+                <div class="conatiner">
+                  <div class="row mx-auto justify-content-center">
+                    <div class="d-flex col-5 col-sm-3 flex-column">
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm mt-1"
+                        onclick="newTimer({time:{hh:0,mm:1,ss:0},title:'1 min timer'})">
+                        1 min timer
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm mt-1"
+                        onclick="newTimer({time:{hh:0,mm:2,ss:0},title:'2 min timer'})">
+                        2 min timer
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm mt-1"
+                        onclick="newTimer({time:{hh:0,mm:5,ss:0},title:'5 min timer'})">
+                        5 min timer
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm mt-1"
+                        onclick="newTimer({time:{hh:0,mm:10,ss:0},title:'10 min timer'})">
+                        10 min timer
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm mt-1"
+                        onclick="newTimer({time:{hh:0,mm:15,ss:0},title:'15 min timer'})">
+                        15 min timer
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm mt-1"
+                        onclick="newTimer({time:{hh:0,mm:30,ss:0},title:'30 min timer'})">
+                        30 min timer
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm mt-1"
+                        onclick="newTimer({time:{hh:0,mm:45,ss:0},title:'45 min timer'})">
+                        45 min timer
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm mt-1"
+                        onclick="newTimer({time:{hh:0,mm:60,ss:0},title:'60 min timer'})">
+                        60 min timer
+                      </button>
+                    </div>
+                    <div class="d-flex col-5 col-sm-3 flex-column">
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm mt-1"
+                        onclick="newTimer({time:{hh:0,mm:0,ss:10},title:'10 sec timer'})">
+                        10 sec timer
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm mt-1"
+                        onclick="newTimer({time:{hh:0,mm:0,ss:20},title:'20 sec timer'})">
+                        20 sec timer
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm mt-1"
+                        onclick="newTimer({time:{hh:0,mm:0,ss:30},title:'30 sec timer'})">
+                        30 sec timer
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm mt-1"
+                        onclick="newTimer({time:{hh:0,mm:0,ss:60},title:'60 sec timer'})">
+                        60 sec timer
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm mt-1"
+                        onclick="newTimer({time:{hh:0,mm:0,ss:90},title:' 90 sec timer'})">
+                        90 sec timer
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm mt-1"
+                        onclick="newTimer({time:{hh:2,mm:0,ss:0},title:'2 Hours timer'})">
+                        2 hours timer
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm mt-1"
+                        onclick="newTimer({time:{hh:4,mm:0,ss:0},title:'4 Hours timer'})">
+                        4 hours timer
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm mt-1"
+                        onclick="newTimer({time:{hh:8,mm:0,ss:0},title:'8 Hours timer'})">
+                        8 hours timer
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <audio id="timer__alert">
                 <source src="./alarm.mp3" type="audio/mpeg" />
               </audio>
