@@ -181,6 +181,32 @@
           <li class="nav-item fs-5">
             <a class="text-white nav-link" href="holidays.html"> Holidays </a>
           </li>
+
+          <li class="nav-item fs-5 dropdown" id="dropdownMenuButton1">
+            <a
+              class="nav-link text-white dropdown-toggle"
+              data-bs-toggle="dropdown"
+              href="#"
+              role="button"
+              aria-expanded="false"
+            >
+              Tools
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <a class="dropdown-item" href="index.html"> Alarm Clock </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="stopwatch.html"> Stopwatch </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="timer.html"> Timer </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="time.html"> Clock </a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item" id="toggle-btn">
             <a class="nav-link text-white" href="#">
               <i class="bi bi-toggle-off fs-4"></i>
@@ -235,12 +261,11 @@
         </div>
 
         <!-- Content -->
-        <div class="col-sm p-3 min-vh-100 bg-body-tertiary">
+        <div class="col-sm p-3 min-vh-100 bg-body-tertiary" id="clock-container">
           <!-- content -->
           <div class="d-flex align-items-center justify-content-center">
             <div
               class="clock-container container bg-white"
-              id="clock-container"
             >
               <div class="d-flex align-items-center justify-content-end mt-3">
                 <button
@@ -390,33 +415,9 @@
     </div>
 
     <!-- /#sidebar -->
-    <script>
-      const toggleButton = document.getElementById("toggle-btn");
-      toggleButton.addEventListener("click", function () {
-        console.log("clocked");
-        const darkThemeToggle = localStorage.getItem("darkTheme");
-        if (darkThemeToggle == "true") {
-          localStorage.setItem("darkTheme", "false");
-        } else {
-          localStorage.setItem("darkTheme", "true");
-        }
-        checkTheme();
-      });
-      window.addEventListener("load", () => {
-        const darkThemeToggle =
-          localStorage.getItem("darkTheme") ||
-          localStorage.setItem("darkTheme", "false");
-        checkTheme();
-      });
-      function checkTheme() {
-        const darkThemeToggle = localStorage.getItem("darkTheme") || "false";
-        if (darkThemeToggle == "true") {
-          document.body.classList.add("dark-mode");
-        } else {
-          document.body.classList.remove("dark-mode");
-        }
-      }
-    </script>
+
+    
+    <script> const toggleButton = document.getElementById("toggle-btn"); toggleButton.addEventListener("click", function () { console.log("clocked"); const darkThemeToggle = localStorage.getItem("darkTheme"); if (darkThemeToggle == "true") { localStorage.setItem("darkTheme", "false"); } else { localStorage.setItem("darkTheme", "true"); } checkTheme(); }); window.addEventListener("load", () => { const darkThemeToggle = localStorage.getItem("darkTheme") || localStorage.setItem("darkTheme", "false"); checkTheme(); }); function checkTheme() { const darkThemeToggle = localStorage.getItem("darkTheme") || "false"; if (darkThemeToggle == "true") { document.body.classList.add("dark-mode"); } else { document.body.classList.remove("dark-mode"); } } </script>
     <script src="./js/alarm.js"></script>
 
     <script

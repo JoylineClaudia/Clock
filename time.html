@@ -102,9 +102,9 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-sm p-3 min-vh-100 bg-body-tertiary">
+            <div class="col-sm p-3 min-vh-100 bg-body-tertiary" id="clock-container">
                 <div class="d-flex align-items-center justify-content-center">
-                    <div class="clock-container container bg-white" id="clock-container">
+                    <div class="clock-container container bg-white" >
                         <div class="d-flex align-items-center justify-content-end mt-3 ">
                             <button class="bg-white border-0 px-2"
                                 onclick="var el = document.getElementById('clock-container'); el.requestFullscreen();">
@@ -115,13 +115,13 @@
                             Time Now
                         </h3>
                         <p class="clock-time text-center text-secondary mt-2" id="mainTime">
-                            11.50.25
+                            
                             <span>
-                                AM
+                               
                             </span>
                         </p>
                         <p class="clock-date text-center fw-bolder text-secondary" id="mainDate">
-                            Wed - Jul 5, 2023
+                           
                         </p>
                     </div>
                 </div>
@@ -154,6 +154,7 @@
         </div>
     </div>
 
+
     <div class="card col-md-3 p-0 m-3 d-none" id="timezoneItem">
         <div class="card-header fs-5" id="timezoneHead">
             <p id="headText" class="headText"></p>
@@ -167,7 +168,7 @@
         </div>
     </div>
 
-    <script>
+    <!-- <script>
         // Get the toggle button element
         const toggleButton = document.getElementById('toggle-btn');
 
@@ -176,7 +177,10 @@
             // Toggle the 'dark-mode' class on the body element
             document.body.classList.toggle('dark-mode');
         });
-    </script>
+    </script> -->
+
+    <script> const toggleButton = document.getElementById("toggle-btn"); toggleButton.addEventListener("click", function () { console.log("clocked"); const darkThemeToggle = localStorage.getItem("darkTheme"); if (darkThemeToggle == "true") { localStorage.setItem("darkTheme", "false"); } else { localStorage.setItem("darkTheme", "true"); } checkTheme(); }); window.addEventListener("load", () => { const darkThemeToggle = localStorage.getItem("darkTheme") || localStorage.setItem("darkTheme", "false"); checkTheme(); }); function checkTheme() { const darkThemeToggle = localStorage.getItem("darkTheme") || "false"; if (darkThemeToggle == "true") { document.body.classList.add("dark-mode"); } else { document.body.classList.remove("dark-mode"); } } </script>
+
     <script src="js/time.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
