@@ -181,32 +181,6 @@
           <li class="nav-item fs-5">
             <a class="text-white nav-link" href="holidays.html"> Holidays </a>
           </li>
-
-          <li class="nav-item fs-5 dropdown" id="dropdownMenuButton1">
-            <a
-              class="nav-link text-white dropdown-toggle"
-              data-bs-toggle="dropdown"
-              href="#"
-              role="button"
-              aria-expanded="false"
-            >
-              Tools
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li>
-                <a class="dropdown-item" href="index.html"> Alarm Clock </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="stopwatch.html"> Stopwatch </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="timer.html"> Timer </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="time.html"> Clock </a>
-              </li>
-            </ul>
-          </li>
           <li class="nav-item" id="toggle-btn">
             <a class="nav-link text-white" href="#">
               <i class="bi bi-toggle-off fs-4"></i>
@@ -416,37 +390,32 @@
     </div>
 
     <!-- /#sidebar -->
-
     <script>
-      // Get the toggle button element
       const toggleButton = document.getElementById("toggle-btn");
-      
-      // Add event listener to handle the toggle button click
-      
-      window.addEventListener("load",()=> {
-      const darkThemeToggle = localStorage.getItem("darkTheme") || "false";
-        if (darkThemeToggle == "true") {
-      document.body.classList.add("dark-mode");
-      } else {
-        document.body.classList.remove("dark-mode");
-        }
-        });
-      
-      
       toggleButton.addEventListener("click", function () {
+        console.log("clocked");
+        const darkThemeToggle = localStorage.getItem("darkTheme");
+        if (darkThemeToggle == "true") {
+          localStorage.setItem("darkTheme", "false");
+        } else {
+          localStorage.setItem("darkTheme", "true");
+        }
+        checkTheme();
+      });
+      window.addEventListener("load", () => {
+        const darkThemeToggle =
+          localStorage.getItem("darkTheme") ||
+          localStorage.setItem("darkTheme", "false");
+        checkTheme();
+      });
+      function checkTheme() {
         const darkThemeToggle = localStorage.getItem("darkTheme") || "false";
         if (darkThemeToggle == "true") {
-      document.body.classList.add("dark-mode");
-      } else {
-        document.body.classList.remove("dark-mode");
+          document.body.classList.add("dark-mode");
+        } else {
+          document.body.classList.remove("dark-mode");
         }
-        // Toggle the 'dark-mode' class on the body element
-        if (darkThemeToggle == "false") {
-          localStorage.setItem("darkTheme", "true");
-          } else {
-            localStorage.setItem("darkTheme", "false");
-            }
-      });
+      }
     </script>
     <script src="./js/alarm.js"></script>
 
