@@ -6,6 +6,29 @@ const timer = {
   runFlag: false,
 };
 
+function vibrate(options = { duration: 100, interval: 100, count: 1 }) {
+  if (!window) {
+    return;
+  }
+
+  if (!window.navigator) {
+    return;
+  }
+
+  if (!window.navigator.vibrate) {
+    return;
+  }
+
+  const pattern = [];
+
+  for (let index = 0; index < options.count; index++) {
+    pattern.push(options.duration);
+    pattern.push(options.interval);
+  }
+
+  window.navigator.vibrate(pattern);
+}
+
 const windowtitle = document.querySelector("title");
 
 //display timer element
@@ -32,6 +55,7 @@ const timer__inputTitle = document.querySelector("#timer__inputTitle");
 
 //alert audio
 const timer__alert = document.querySelector("#timer__alert");
+timer__alert.loop = true;
 
 //format the output
 const timer__formatOutput = (totalSeconds) => {
@@ -102,6 +126,7 @@ const timer__startTimer = () => {
       windowtitle.innerText = `*** ${timer__formatOutput(
         timer.totalSeconds
       )} ***`;
+      vibrate({ duration: 1000, interval: 2000, count: 5 });
       timer__alert.play();
     }, timeout * 1000);
   }
@@ -141,6 +166,7 @@ const timer__stopAlert = (restart) => {
   timer__resetTimer();
   if (restart) timer__startTimer();
   timer.runFlag = false;
+  window.navigator.vibrate(0);
   return;
 };
 //get form input
