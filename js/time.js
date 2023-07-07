@@ -196,7 +196,7 @@ function detectLocalStorageChanges() {
 
 
 document.addEventListener("DOMContentLoaded", function() {
-const deleteBtns = document.getElementsByClassName("deleteBtn");
+let deleteBtns = document.getElementsByClassName("deleteBtn");
 Array.from(deleteBtns).forEach(button => {
 button.addEventListener("click", function() {
   let oldData = JSON.parse(localStorage.getItem("worldClock"))
@@ -204,6 +204,16 @@ button.addEventListener("click", function() {
   let newData = oldData.filter(item => item !== id)
   localStorage.setItem("worldClock",JSON.stringify(newData))
 });
+});
+});
+
+let deleteBtns = document.getElementsByClassName("deleteBtn");
+Array.from(deleteBtns).forEach(button => {
+button.addEventListener("click", function() {
+  let oldData = JSON.parse(localStorage.getItem("worldClock"))
+  let id = button.id.replace("_","/")
+  let newData = oldData.filter(item => item !== id)
+  localStorage.setItem("worldClock",JSON.stringify(newData))
 });
 });
 
