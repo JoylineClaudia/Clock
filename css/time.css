@@ -1,40 +1,10 @@
-.add-container {
-  position: absolute;
-  top: 0%;
-  background-color: rgba(0, 0, 0, 0.4);
-  width: 100vw;
-  height: 100vh;
-}
-.add-container .add-form {
-  background-color: white;
-  width: 30%;
-  padding: 3rem;
-  height: 300px;
-  display: flex;
-  position: absolute;
-  top: 30%;
-  right: 40%;
-  flex-direction: column;
-  border-radius: 5px;
-  justify-content: space-between;
-}
-.add-container .add-form #country {
-  width: 80%;
-}
-.add-container .add-form #timezone {
-  width: 80%;
-}
-
-.add-btn {
-  font-weight: 600;
-}
-
 .deleteBtn {
   border: none;
   background-color: unset;
   position: absolute;
-  top: 12px;
+  top: 5px;
   right: 20px;
+  color: #6c757d;
 }
 
 .stop-scroll {
