@@ -195,6 +195,23 @@ const timer__getFormInput = (event) => {
   else timer__startTimer();
 };
 
+const newTimer = (newTime) => {
+  let totalSeconds =
+    newTime.time.hh * 3600 + newTime.time.mm * 60 + newTime.time.ss;
+  timer.totalSeconds = totalSeconds;
+  timer.title = newTime.title;
+  timer.remSeconds = totalSeconds;
+  //store the timer
+  timer__storeTimer();
+
+  //display & start timer
+  timer__resetTimer();
+  timer__setTitle(timer.title);
+  timer__setTime(timer.totalSeconds);
+  if (timer.totalSeconds == 0) timer__setBtn(true, true);
+  else timer__startTimer();
+};
+
 const timer__storeTimer = () => {
   localStorage.setItem("timer", JSON.stringify(timer));
 };
