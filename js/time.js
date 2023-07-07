@@ -195,6 +195,7 @@ function detectLocalStorageChanges() {
 }
 
 
+document.addEventListener("DOMContentLoaded", function() {
 const deleteBtns = document.getElementsByClassName("deleteBtn");
 Array.from(deleteBtns).forEach(button => {
 button.addEventListener("click", function() {
@@ -204,7 +205,7 @@ button.addEventListener("click", function() {
   localStorage.setItem("worldClock",JSON.stringify(newData))
 });
 });
-
+});
 
 detectLocalStorageChanges();
 initial()
