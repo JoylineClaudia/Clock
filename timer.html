@@ -21,6 +21,19 @@
       left: 50%;
       transform: translateX(-50%);
     }
+
+    /* dark mode for modal */
+    body.dark-mode .modal-content {
+      background-color: rgb(13, 13, 13) !important;
+      color: rgb(232, 232, 232) !important;
+    }
+    body.dark-mode .form-control,
+    body.dark-mode .form-select,
+    body.dark-mode .form-control:focus,
+    body.dark-mode .form-select:focus {
+      background-color: rgb(34, 34, 34) !important;
+      color: rgb(232, 232, 232) !important;
+    }
   </style>
 
   <body>
@@ -36,7 +49,7 @@
 
         <ul class="nav justify-content-end">
           <li class="nav-item fs-5">
-            <a class="text-white nav-link" href="#"> Holidays </a>
+            <a class="text-white nav-link" href="holidays.html"> Holidays </a>
           </li>
 
           <li class="nav-item" id="toggle-btn">
@@ -64,7 +77,7 @@
                 <a href="index.html" class="nav-link text-white">
                   <i class="bi bi-alarm fs-2"></i>
 
-                  <p>Alarm Clock</p>
+                  <p>Alarm</p>
                 </a>
               </li>
               <li class="active w-100">
@@ -98,19 +111,28 @@
               <div class="d-flex align-items-center justify-content-end mt-3">
                 <button
                   class="bg-white border-0 px-2"
-                  onclick="var el = document.getElementById('clock-container'); el.requestFullscreen();">
+                  onclick="toggleFullscreen()">
                   <i class="bi bi-arrows-fullscreen"></i>
                 </button>
               </div>
 
               <p
-                class="clock-time text-center text-secondary mt-2"
+                class="clock-time text-center text-secondary mt-5 pt-5"
                 style="font-size: 4rem !important"
                 id="timer__displayTitle"></p>
               <p
                 class="clock-time text-center text-secondary mt-2"
                 id="timer__clock"></p>
-
+              <div class="progress w-75 mx-auto">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  id="timer__progess"
+                  style="width: 100%"
+                  aria-valuenow="100"
+                  aria-valuemin="0"
+                  aria-valuemax="100"></div>
+              </div>
               <div class="d-flex justify-content-center my-5">
                 <button
                   type="button"
@@ -479,11 +501,6 @@
                       <h5 class="modal-title text-white" id="exampleModalLabel">
                         Timer
                       </h5>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                       <p class="fs-2 text-center" id="timer__dialogTitle"></p>
@@ -525,7 +542,6 @@
     <!--Main Navigation-->
 
     <script src="./js/timer.js"></script>
-    <script src="./js/time.js"></script>
 
     <script>
       const toggleButton = document.getElementById("toggle-btn");
@@ -563,5 +579,21 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
       integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
       crossorigin="anonymous"></script>
+
+     <script>
+        var isFullscreen = false;
+        function toggleFullscreen() {
+            var container = document.getElementById("clock-container");
+
+            if (isFullscreen) {
+                document.webkitCancelFullScreen();
+            } else {
+                container.webkitRequestFullScreen();
+            }
+            isFullscreen = !isFullscreen;
+
+            
+        }
+    </script>
   </body>
 </html>

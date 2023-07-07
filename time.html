@@ -29,7 +29,7 @@
                 <li class="nav-item fs-5">
                     <a class="text-white nav-link" href="holidays.html">Holidays</a>
                 </li>
-                <li class="nav-item fs-5 dropdown" id="dropdownMenuButton1">
+                <!--<li class="nav-item fs-5 dropdown" id="dropdownMenuButton1">
                     <a class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                         aria-expanded="false">
                         Tools
@@ -48,7 +48,7 @@
                             <a class="dropdown-item" href="time.html">Clock</a>
                         </li>
                     </ul>
-                </li>
+                </li>-->
                 <li class="nav-item" id="toggle-btn">
                     <a class="nav-link text-white" href="#">
                         <i class="bi bi-toggle-off fs-4"></i>
@@ -107,7 +107,7 @@
                     <div class="clock-container container bg-white" id="clock-container">
                         <div class="d-flex align-items-center justify-content-end mt-3 ">
                             <button class="bg-white border-0 px-2"
-                                onclick="var el = document.getElementById('clock-container'); el.requestFullscreen();">
+                                onclick="toggleFullscreen()">
                                 <i class="bi bi-arrows-fullscreen"></i>
                             </button>
                         </div>
@@ -219,6 +219,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
+     <script>
+        var isFullscreen = false;
+        function toggleFullscreen() {
+            var container = document.getElementById("clock-container");
+
+            if (isFullscreen) {
+                document.webkitCancelFullScreen();
+            } else {
+                container.webkitRequestFullScreen();
+            }
+            isFullscreen = !isFullscreen;
+
+            
+        }
+    </script>
 </body>
 
 </html>

@@ -6,9 +6,12 @@ const timer = {
   runFlag: false,
 };
 
+const windowtitle = document.querySelector("title");
+
 //display timer element
 const timer__displayTitle = document.querySelector("#timer__displayTitle");
 const timer__clock = document.querySelector("#timer__clock");
+const timer__progress = document.querySelector("#timer__progess");
 
 const timer__totalSeconds = document.querySelector("#timer__totalSeconds");
 const timer__dialogTitle = document.querySelector("#timer__dialogTitle");
@@ -58,7 +61,19 @@ const timer__setTitle = (title) => {
 
 //set time
 const timer__setTime = (seconds) => {
-  timer__clock.innerText = timer__formatOutput(seconds);
+  const formatedtime = timer__formatOutput(seconds);
+  timer__clock.innerText = formatedtime;
+  windowtitle.innerText = `${formatedtime} - timer`;
+
+  let progress = (100 * timer.remSeconds) / timer.totalSeconds;
+  timer__progress.style.width = `${progress}%`;
+
+  if (progress >= 0 && progress <= 10)
+    timer__progress.style.backgroundColor = "#d50000";
+  else if (progress > 10 && progress <= 35)
+    timer__progress.style.backgroundColor = "#cccc01";
+  else timer__progress.style.backgroundColor = "#13ab00";
+
   timer__storeTimer();
 };
 
@@ -74,16 +89,19 @@ const timer__startTimer = () => {
     timer__interval = setInterval(() => {
       timer.runFlag = true;
       timer.remSeconds -= 1;
+
       timer__setTime(timer.remSeconds);
     }, 1000);
 
     timer__timeout = setTimeout(() => {
-      console.log("timeout");
       timer__initTimer();
       timer__setTime(0);
       timer__totalSeconds.innerText = timer__formatOutput(timer.totalSeconds);
       timer__dialogTitle.innerText = timer.title ? timer.title : "---";
       timer__alertBtn.click();
+      windowtitle.innerText = `*** ${timer__formatOutput(
+        timer.totalSeconds
+      )} ***`;
       timer__alert.play();
     }, timeout * 1000);
   }
@@ -111,7 +129,8 @@ const timer__resetTimer = () => {
   timer__initTimer();
   timer.remSeconds = timer.totalSeconds;
   timer.runFlag = false;
-  timer__setBtn(false, true);
+  if (timer.totalSeconds == 0) timer__setBtn(true, true);
+  else timer__setBtn(false, true);
   timer__setTime(timer.totalSeconds);
 };
 timer__resetBtn.addEventListener("click", timer__resetTimer);
@@ -146,7 +165,6 @@ const timer__getFormInput = (event) => {
   timer__resetTimer();
   timer__setTitle(timer.title);
   timer__setTime(timer.totalSeconds);
-  console.log(timer.totalSeconds);
   if (timer.totalSeconds == 0) timer__setBtn(true, true);
   else timer__startTimer();
 };
@@ -158,10 +176,8 @@ const timer__storeTimer = () => {
 //get previous timer from local storage
 const timer__reloadTimer = () => {
   const localTimer = JSON.parse(localStorage.getItem("timer"));
-  console.log(localTimer);
-  console.log(typeof localTimer);
+
   Object.assign(timer, localTimer);
-  console.log(timer);
   if (timer.runFlag) {
     timer__startTimer();
   } else {
