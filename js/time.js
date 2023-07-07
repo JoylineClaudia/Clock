@@ -13,7 +13,7 @@ function current() {
     //set formatted date
     const currentTimeElement = document.getElementById("mainTime");
     currentTimeElement.innerHTML = `${timeString}<span>${meridiem}</span>`;
-  
+    document.title = "Time Now "+timeString+" "+meridiem+"🕑"
     //get fomatted date
     const currentDate = new Date();
     const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -84,6 +84,8 @@ countrySelectEle.addEventListener("change", (e) => {
 
 function getTime(timezone) {
   const currentTime = new Date();
+  const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
 
   // Convert the current time to the desired country's time zone
   let options = {
@@ -93,18 +95,19 @@ function getTime(timezone) {
     minute: "numeric",
     second: "numeric",
   };
+
   let formattedTime = currentTime.toLocaleString("en-US", options);
+let userUtcOffsetMinutes = currentTime.getTimezoneOffset();
+  let targetUtcOffsetMinutes = timezone.utcOffset;
 
-  let utcOffsetMinutes = timezone.utcOffset;
-
-  let hoursDifference = Math.floor(utcOffsetMinutes / 60);
-  let minutesDifference = Math.abs(utcOffsetMinutes % 60);
+  let hourDifference = Math.floor((userUtcOffsetMinutes - targetUtcOffsetMinutes) / 60);
+  let minuteDifference = Math.abs((userUtcOffsetMinutes - targetUtcOffsetMinutes) % 60);
 
   let timeDifference =
-    (hoursDifference >= 0 ? "+" : "-") +
-    Math.abs(hoursDifference).toString().padStart(2, "0") +
+    (hourDifference >= 0 ? "+" : "-") +
+    Math.abs(hourDifference).toString().padStart(2, "0") +
     ":" +
-    minutesDifference.toString().padStart(2, "0");
+    minuteDifference.toString().padStart(2, "0");
   return {
     currentTime: formattedTime,
     timeDifference: timeDifference,
@@ -156,6 +159,8 @@ function initial() {
       setInterval(() => {
         let result = getTime(ct.getTimezone(ele));
         timezoneTime.innerHTML = result.currentTime;
+        timezoneDiff.innerHTML = result.timeDifference;
+
       }, 1000);
       parentContainer.appendChild(clone);
     });
@@ -189,6 +194,7 @@ function detectLocalStorageChanges() {
         setInterval(() => {
           let result = getTime(ct.getTimezone(ele));
           timezoneTime.innerHTML = result.currentTime;
+          timezoneDiff.innerHTML = result.timeDifference;
         }, 1000);
         parentContainer.appendChild(clone);
       });
