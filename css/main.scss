@@ -20,6 +20,10 @@ body {
     color: #ffffff;
   }
 
+  .navbar-back {
+    background-image: linear-gradient(45deg, #413eee, #f70b0b);
+  }
+
   .sidebar{
     li :hover{
         background-color: #495057;
@@ -150,6 +154,11 @@ body {
             color: $white !important;
         }
     }
+
+    .navbar-back {
+        background-image: linear-gradient(45deg, #03024a, #8a084f) !important;
+    }
+
 
 
     
