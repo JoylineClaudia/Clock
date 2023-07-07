@@ -72,10 +72,6 @@ countrySelectEle.addEventListener("change", (e) => {
 
 function getTime(timezone) {
   const currentTime = new Date();
-  const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-
-  // Convert the current time to the desired country's time zone
   let options = {
     timeZone: timezone.name,
     hour12: true,
@@ -83,24 +79,35 @@ function getTime(timezone) {
     minute: "numeric",
     second: "numeric",
   };
-
   let formattedTime = currentTime.toLocaleString("en-US", options);
-let userUtcOffsetMinutes = currentTime.getTimezoneOffset();
-  let targetUtcOffsetMinutes = timezone.utcOffset;
-
-  let hourDifference = Math.floor((userUtcOffsetMinutes - targetUtcOffsetMinutes) / 60);
-  let minuteDifference = Math.abs((userUtcOffsetMinutes - targetUtcOffsetMinutes) % 60);
-
-  let timeDifference =
-    (hourDifference >= 0 ? "+" : "-") +
-    Math.abs(hourDifference).toString().padStart(2, "0") +
-    ":" +
-    minuteDifference.toString().padStart(2, "0");
-  return {
-    currentTime: formattedTime,
-    timeDifference: timeDifference,
-  };
+  return formattedTime
 }
+
+
+function getDiff(timezone){
+  const currentTime = new Date();
+  let options = {
+    timeZone: timezone.name,
+    hour12: false,
+    hour: "numeric",
+    minute: "numeric",
+  };
+  let countryTime = currentTime.toLocaleString("en-US", options)
+  let userHour = currentTime.getHours()
+  let userMin = currentTime.getMinutes()
+  let countryHour = +countryTime.substring(0,2)
+  let countryMin = +countryTime.substring(3,5)
+  let totalUserMin = (userHour*60)+userMin
+  let totalCountryMin = (countryHour*60)+countryMin
+  let minDiff = totalUserMin-totalCountryMin
+  let diffHour = Math.round(minDiff/60)
+  let diffMin = minDiff%60;
+  diffHour  = diffHour<10? "0"+diffHour : diffHour
+  diffMin  = diffMin<10? "0"+diffMin : diffMin
+
+  return `${diffHour}:${diffMin}`
+}
+
 
 const countryHead = document.getElementById("countryHead");
 const timezoneslist = document.getElementById("timezones");
@@ -144,11 +151,10 @@ function initial() {
       const delBtn = clone.querySelector(".deleteBtn")
       headText.innerHTML = ele;
       delBtn.setAttribute("id",id)
+      timezoneDiff.innerHTML = `Difference: ${getDiff(ct.getTimezone(ele))}`
       setInterval(() => {
         let result = getTime(ct.getTimezone(ele));
-        timezoneTime.innerHTML = result.currentTime;
-        timezoneDiff.innerHTML = result.timeDifference;
-
+        timezoneTime.innerHTML = result
       }, 1000);
       parentContainer.appendChild(clone);
     });
@@ -179,10 +185,11 @@ function detectLocalStorageChanges() {
         const timezoneDiff = clone.querySelector("#timezoneMain #timezoneDiff");
         headText.innerHTML = ele;
         delBtn.setAttribute("id",id)
+        timezoneDiff.innerHTML = getDiff(ct.getTimezone(ele))
         setInterval(() => {
           let result = getTime(ct.getTimezone(ele));
           timezoneTime.innerHTML = result.currentTime;
-          timezoneDiff.innerHTML = result.timeDifference;
+          
         }, 1000);
         parentContainer.appendChild(clone);
       });
