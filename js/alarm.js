@@ -107,7 +107,7 @@ setInterval(() => {
       months[time.getMonth()]
     } ${time.getDate()} ${time.getFullYear()}
         </p>`;
-    document.title = `Time Now: ${formatAMPM(time)} 🕑`;
+    document.title = `Time Now:  ${formatAMPM(time).replace(/<\/?span>/g, '')} 🕑`;
 
   }
 }, 1000);
