@@ -63,7 +63,7 @@ const timer__setTitle = (title) => {
 const timer__setTime = (seconds) => {
   const formatedtime = timer__formatOutput(seconds);
   timer__clock.innerText = formatedtime;
-  windowtitle.innerText = `${formatedtime} - timer`;
+  windowtitle.innerText = `${formatedtime} - Timer`;
 
   let progress = (100 * timer.remSeconds) / timer.totalSeconds;
   timer__progress.style.width = `${progress}%`;
