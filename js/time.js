@@ -41,18 +41,6 @@ function current() {
     const currentDateElement = document.getElementById("mainDate");
     currentDateElement.innerHTML = dateString;
   }
-const addBtn = document.getElementById("addBtn")
-const cancelBtn = document.getElementById("cancelBtn")
-const addContainer = document.getElementById("addContainer")
-const body = document.getElementById("body")
-addBtn.addEventListener("click",()=>{
-  addContainer.classList.remove("d-none")
-  body.classList.add("stop-scroll")
-})
-cancelBtn.addEventListener("click",()=>{
-  addContainer.classList.add("d-none")
-  body.classList.remove("stop-scroll")
-})
 
 
 let allCountries = Object.values(ct.getAllCountries());
