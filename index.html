@@ -425,8 +425,6 @@
     </div>
 
     <!-- /#sidebar -->
-
-    <script src="js/time.js"></script>
     
     <script> const toggleButton = document.getElementById("toggle-btn"); toggleButton.addEventListener("click", function () { console.log("clocked"); const darkThemeToggle = localStorage.getItem("darkTheme"); if (darkThemeToggle == "true") { localStorage.setItem("darkTheme", "false"); } else { localStorage.setItem("darkTheme", "true"); } checkTheme(); }); window.addEventListener("load", () => { const darkThemeToggle = localStorage.getItem("darkTheme") || localStorage.setItem("darkTheme", "false"); checkTheme(); }); function checkTheme() { const darkThemeToggle = localStorage.getItem("darkTheme") || "false"; if (darkThemeToggle == "true") { document.body.classList.add("dark-mode"); } else { document.body.classList.remove("dark-mode"); } } </script>
     <script src="./js/alarm.js"></script>
