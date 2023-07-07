@@ -8,8 +8,20 @@
     <link rel="stylesheet" href="./css/bootstrap.css" />
     <link
       rel="stylesheet"
+      href="https://www.nerdfonts.com/assets/css/webfont.css" />
+    <link
+      rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
   </head>
+
+  <style>
+    .timer__icon {
+      width: 80px;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
 
   <body>
     <nav class="navbar bg-primary">
@@ -27,30 +39,6 @@
             <a class="text-white nav-link" href="#"> Holidays </a>
           </li>
 
-          <li class="nav-item fs-5 dropdown" id="dropdownMenuButton1">
-            <a
-              class="nav-link text-white dropdown-toggle"
-              data-bs-toggle="dropdown"
-              href="#"
-              role="button"
-              aria-expanded="false">
-              Tools
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li>
-                <a class="dropdown-item" href="index.html"> Alarm Clock </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="stopwatch.html"> Stopwatch </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="timer.html"> Timer </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="time.html"> Clock </a>
-              </li>
-            </ul>
-          </li>
           <li class="nav-item" id="toggle-btn">
             <a class="nav-link text-white" href="#">
               <i class="bi bi-toggle-off fs-4"></i>
@@ -76,7 +64,7 @@
                 <a href="index.html" class="nav-link text-white">
                   <i class="bi bi-alarm fs-2"></i>
 
-                  <p>Alaram Clock</p>
+                  <p>Alarm Clock</p>
                 </a>
               </li>
               <li class="active w-100">
@@ -469,6 +457,63 @@
                   </div>
                 </div>
               </div>
+
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                id="timer__alertBtn"
+                data-bs-target="#timeoutModal"
+                style="visibility: hidden"></button>
+
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="timeoutModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header bg-danger">
+                      <h5 class="modal-title text-white" id="exampleModalLabel">
+                        Timer
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p class="fs-2 text-center" id="timer__dialogTitle"></p>
+                      <img
+                        class="timer__icon"
+                        src="./images/timer.svg"
+                        alt="" />
+                      <p
+                        class="fs-2 mt-2 text-center"
+                        id="timer__totalSeconds"></p>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                        onclick="timer__stopAlert(true)">
+                        Restart
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-primary px-4 me-3"
+                        data-bs-dismiss="modal"
+                        onclick="timer__stopAlert(false)">
+                        Ok
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -482,7 +527,33 @@
     <script src="./js/timer.js"></script>
     <script src="./js/time.js"></script>
 
-    <script> const toggleButton = document.getElementById("toggle-btn"); toggleButton.addEventListener("click", function () { console.log("clocked"); const darkThemeToggle = localStorage.getItem("darkTheme"); if (darkThemeToggle == "true") { localStorage.setItem("darkTheme", "false"); } else { localStorage.setItem("darkTheme", "true"); } checkTheme(); }); window.addEventListener("load", () => { const darkThemeToggle = localStorage.getItem("darkTheme") || localStorage.setItem("darkTheme", "false"); checkTheme(); }); function checkTheme() { const darkThemeToggle = localStorage.getItem("darkTheme") || "false"; if (darkThemeToggle == "true") { document.body.classList.add("dark-mode"); } else { document.body.classList.remove("dark-mode"); } } </script>
+    <script>
+      const toggleButton = document.getElementById("toggle-btn");
+      toggleButton.addEventListener("click", function () {
+        console.log("clocked");
+        const darkThemeToggle = localStorage.getItem("darkTheme");
+        if (darkThemeToggle == "true") {
+          localStorage.setItem("darkTheme", "false");
+        } else {
+          localStorage.setItem("darkTheme", "true");
+        }
+        checkTheme();
+      });
+      window.addEventListener("load", () => {
+        const darkThemeToggle =
+          localStorage.getItem("darkTheme") ||
+          localStorage.setItem("darkTheme", "false");
+        checkTheme();
+      });
+      function checkTheme() {
+        const darkThemeToggle = localStorage.getItem("darkTheme") || "false";
+        if (darkThemeToggle == "true") {
+          document.body.classList.add("dark-mode");
+        } else {
+          document.body.classList.remove("dark-mode");
+        }
+      }
+    </script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
