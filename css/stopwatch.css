@@ -18,12 +18,12 @@
   }
 }
 
-ul {
+ .all-laps ul {
   list-style-type: none;
   font-size: 1.5em;
 }
 @media only screen and (max-width: 450px) {
-  ul {
+  .all-laps ul {
     font-size: 1em;
   }
 }
