@@ -281,8 +281,7 @@
               <div class="d-flex align-items-center justify-content-end mt-3">
                 <button
                   class="bg-white border-0 px-2"
-                  onclick="var el = document.getElementById('clock-container'); el.requestFullscreen();"
-                >
+                  onclick="toggleFullscreen()">
                   <i class="bi bi-arrows-fullscreen"></i>
                 </button>
               </div>
@@ -473,6 +472,21 @@
       }
     </script>
     <script src="./js/alarm.js"></script>
+    <script>
+        var isFullscreen = false;
+        function toggleFullscreen() {
+            var container = document.getElementById("clock-container");
+
+            if (isFullscreen) {
+                document.webkitCancelFullScreen();
+            } else {
+                container.webkitRequestFullScreen();
+            }
+            isFullscreen = !isFullscreen;
+
+            
+        }
+    </script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
