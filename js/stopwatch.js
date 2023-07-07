@@ -22,6 +22,7 @@
     var totalLap = { thours: 0, tminutes: 0, ttens: 0, tseconds: 0 };
     var boolReset = boolStop = boolStart = false;
     var items = false;
+    var value = {'hours':'00', 'minutes':'00', 'seconds':'00', 'tens':'00'};
   
     function leftPad(value) {
       return value < 10  ? "0" + value : value;
@@ -41,7 +42,7 @@
     Stop.onclick = function() {
       boolStop = true;
       clearInterval(Interval);
-      var value = {'hours':hours, 'minutes':minutes, 'seconds':seconds, 'tens':tens};
+      value = {'hours':hours, 'minutes':minutes, 'seconds':seconds, 'tens':tens};
       console.log(value)
       localStorage.setItem('mainTimer', JSON.stringify(value))
       Start.style.display = "block";
@@ -62,6 +63,7 @@
       aMinutes.innerHTML = minutes;
       aSeconds.innerHTML = seconds;
       aTens.innerHTML = tens;
+      document.title = `${minutes}:${seconds} stop watch ⏱`;
     };
   
     function startTimer() {
@@ -89,6 +91,7 @@
       if (seconds > 59) {
         minutes++;
         aMinutes.innerHTML = "0" + minutes;
+        // document.title = "0" + minutes
         seconds = 0;
         aSeconds.innerHTML = "0" + 0;
         tens = 0;
@@ -113,10 +116,12 @@
       if (hours > 9) {
         aHours.innerHTML = hours;
       }
-      var value = {'hours':hours, 'minutes':minutes, 'seconds':seconds, 'tens':tens};
+      var value = {'hours':hours, 'minutes':(minutes), 'seconds':leftPad(seconds), 'tens':tens};
+      // console.log(value);
       // if(value.minutes.length == 1) {
       //   value.minutes = "0" + value.minutes;
       // }
+      document.title = `${value.minutes}:${value.seconds} stop watch ⏱`;
       localStorage.setItem('mainTimer', JSON.stringify(value))
     }
     
@@ -181,6 +186,9 @@
         lapHours = lastLap.hours - (+totalLap.thours);
         lapMinutes = lastLap.minutes - (+totalLap.tminutes);
         lapSeconds = lastLap.seconds - (+totalLap.tseconds);
+        if (lapSeconds < 0) {
+          lapSeconds = 0;
+        }
         if (+totalLap.ttens > lastLap.tens) {
             lapTens = (+totalLap.ttens) - lastLap.tens;
         } else {
@@ -252,8 +260,11 @@
       content.classList.add("d-none");
       lapCount = 1;
     };
+
+    
     
     window.addEventListener("DOMContentLoaded", function() {
+      
         if(localStorage.getItem('totalLaps') !== null) {
             let rs = localStorage.getItem('totalLaps').substring(4, 15)
             console.log('r', rs)
@@ -277,11 +288,12 @@
           items = true;
         } 
         if(localStorage.getItem('mainTimer') === null) {
-            var value = {'hours':leftDads(hours), 'minutes':leftDads(minutes), 'seconds':seconds, 'tens':tens};
+             value = {'hours':leftDads(hours), 'minutes':leftDads(minutes), 'seconds':seconds, 'tens':tens};
             // console.log(value)
             localStorage.setItem('mainTimer', JSON.stringify(value))
         }
         
+
 
         if (localStorage.getItem('mainTimer') !== null) {
           var s = localStorage.getItem('mainTimer');
@@ -297,9 +309,11 @@
           if ((t.minutes.toString()).length == 1) {
             t.minutes = "0" + t.minutes;
           }
+          console.log('local', t.minutes, t.seconds)
+          document.title = `${t.minutes}:${leftDads(t.seconds)} stop watch ⏱`;
           hours = t.hours
-          minutes = (t.minutes);
-          seconds = leftPad(t.seconds);
+          minutes = leftDads(t.minutes);
+          seconds = leftDads(t.seconds);
           tens = (t.tens);
           aHours.innerHTML = hours;
           aMinutes.innerHTML = minutes;
@@ -314,4 +328,3 @@
         }
     });
 })();
-  
