@@ -145,8 +145,11 @@
                                 Wed  -  Jul 5, 2023
                             </p> -->
 
+                            <div class="justify-content-center">
+                                <p class="timer text-center text-secondary" style="width:80%;" ><span class="clock-time" id="hours">00</span><span class="clock-time" id="minutes">00</span><span class="clock-time" id="seconds">00</span><span class="clock-time" id="tens" style="display: inline-block;width: 10px;">00</span></p>
+                            </div>
 
-                            <p class="timer text-center text-secondary" ><span class="clock-time" id="hours">00</span><span class="clock-time" id="minutes">00</span><span class="clock-time" id="seconds">00</span><span class="clock-time" id="tens">00</span></p>
+                            
                             <!-- <div class="d-flex" style="border:2px solid red;width: 10em;
                             justify-content: space-around;">
                                 
@@ -159,11 +162,14 @@
                                 <button class="btn bg-info mx-3" id="lap" style="display: none;">Lap</button>
                             </div>
                         </div>
-                        <div class="clock-container container bg-white pt-4" style="margin-top:5em;display: flex;
+                        <div class="clock-container container bg-white pt-1" style="display: flex;
                         justify-content: center;
                         flex-direction: column;
                         align-content: center;
                         align-items: center;" id="content">
+
+                        <button class="btn bg-primary mb-5" id="clear">Clear Laps</button>
+
                             <div class="d-flex" style="justify-content: space-evenly;
             width: 33%;" id="laping"><p >Laps</p><p >&nbsp; Lap Time</p><p >&nbsp; &nbsp;Total Time</p></div>
             <div class="d-flex">
@@ -172,7 +178,7 @@
                 <ul class="" id="totalTaps" ></ul>
                 
             </div>
-            <button class="btn bg-primary" id="clear">Clear Laps</button>
+           
                         </div>
 
                     </div>
