@@ -98,6 +98,8 @@ setInterval(() => {
     } ${time.getDate()} ${time.getFullYear()}
         </p>
   `;
+      document.title = `Time Now: ${time.getHours()} : ${time.getMinutes()} : ${time.getSeconds()} 🕑`;
+
   } else {
     timeElement.innerHTML = `${formatAMPM(time)}<br>
     <p class="clock-date text-center fw-bolder text-secondary">
@@ -105,6 +107,8 @@ setInterval(() => {
       months[time.getMonth()]
     } ${time.getDate()} ${time.getFullYear()}
         </p>`;
+    document.title = `Time Now: ${formatAMPM(time)} 🕑`;
+
   }
 }, 1000);
 
