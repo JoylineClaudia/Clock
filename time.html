@@ -29,7 +29,7 @@
                 <li class="nav-item fs-5">
                     <a class="text-white nav-link" href="holidays.html">Holidays</a>
                 </li>
-                <!--<li class="nav-item fs-5 dropdown" id="dropdownMenuButton1">
+                <li class="nav-item fs-5 dropdown" id="dropdownMenuButton1">
                     <a class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                         aria-expanded="false">
                         Tools
@@ -48,7 +48,7 @@
                             <a class="dropdown-item" href="time.html">Clock</a>
                         </li>
                     </ul>
-                </li>-->
+                </li>
                 <li class="nav-item" id="toggle-btn">
                     <a class="nav-link text-white" href="#">
                         <i class="bi bi-toggle-off fs-4"></i>
@@ -107,7 +107,7 @@
                     <div class="clock-container container bg-white" id="clock-container">
                         <div class="d-flex align-items-center justify-content-end mt-3 ">
                             <button class="bg-white border-0 px-2"
-                                onclick="toggleFullscreen()">
+                                onclick="var el = document.getElementById('clock-container'); el.requestFullscreen();">
                                 <i class="bi bi-arrows-fullscreen"></i>
                             </button>
                         </div>
@@ -130,57 +130,44 @@
                 </center> -->
 
 
-<!-- Button trigger modal -->
-<center><button type="button" class="btn btn-outline-secondary addbtn mt-4" data-bs-toggle="modal" data-bs-target="#addModal">
-    Add Timezone
-  </button></center>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-primary ">
-          <h5 class="modal-title text-white" id="modalTitle">Add Timezone</h5>
-          <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form action="" class="add-form" >
-                <select name="country" id="country" class="form-select mb-3" aria-label="Default select example">
-                    <option value="">Select Country</option>
-                </select>
-                <select name="Timezones" id="timezone"class="form-select" aria-label="Default select example">
-                    <option value="">Select timezone</option>
-                </select>
-            </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn-secondary btn" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="addTimezoneBtn" data-bs-dismiss="modal">Save</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
+                <!-- Button trigger modal -->
+                <center><button type="button" class="btn btn-outline-secondary addbtn mt-4" data-bs-toggle="modal"
+                        data-bs-target="#addModal">
+                        Add Timezone
+                    </button></center>
 
-
-
-
-                <!-- <div class="add-container d-none z-3 container" id="addContainer">
-                    <form action="" class="add-form" >
-                        <select name="country" id="country" class="form-select" aria-label="Default select example">
-                            <option value="">Select Country</option>
-                        </select>
-                        <select name="Timezones" id="timezone"class="form-select" aria-label="Default select example">
-                            <option value="">Select timezone</option>
-                        </select>
-                        <div class="btns">
-                            <button type="button" id="addTimezoneBtn" class="btn btn-primary">Add</button>
-                            <button type="button" id="cancelBtn" class="btn btn-outline-danger">cancel</button>
+                <!-- Modal -->
+                <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary ">
+                                <h5 class="modal-title text-white" id="modalTitle">Add Timezone</h5>
+                                <button type="button" class="btn-close " data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" class="add-form">
+                                    <select name="country" id="country" class="form-select mb-3"
+                                        aria-label="Default select example">
+                                        <option value="">Select Country</option>
+                                    </select>
+                                    <select name="Timezones" id="timezone" class="form-select"
+                                        aria-label="Default select example">
+                                        <option value="">Select timezone</option>
+                                    </select>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn-secondary btn" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="addTimezoneBtn"
+                                    data-bs-dismiss="modal">Save</button>
+                            </div>
                         </div>
-                    </form>
-                </div> -->
-                <div class="col-sm p-3 bg-body-tertiary timezoneContainer" >
-                    <div class="row"id="timezoneContainer">
+                    </div>
+                </div>
+
+                <div class="col-sm p-3 bg-body-tertiary timezoneContainer">
+                    <div class="row" id="timezoneContainer">
 
                     </div>
 
@@ -192,7 +179,7 @@
     <div class="card col-md-3 p-0 m-3 d-none" id="timezoneItem">
         <div class="card-header fs-5" id="timezoneHead">
             <p id="headText" class="headText"></p>
-            <button type="button" class="deleteBtn"><i class="bi bi-trash-fill"></i></button>
+            <button type="button" class="deleteBtn world-time" ;"><i class="bi bi-trash-fill"></i></button>
         </div>
         <div class="card-body" id="timezoneMain">
             <p class="world-time text-center text-secondary mt-2" id="timezoneTime">
@@ -219,21 +206,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
-     <script>
-        var isFullscreen = false;
-        function toggleFullscreen() {
-            var container = document.getElementById("clock-container");
-
-            if (isFullscreen) {
-                document.webkitCancelFullScreen();
-            } else {
-                container.webkitRequestFullScreen();
-            }
-            isFullscreen = !isFullscreen;
-
-            
-        }
-    </script>
 </body>
 
 </html>
