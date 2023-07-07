@@ -63,7 +63,7 @@ const timer__setTitle = (title) => {
 const timer__setTime = (seconds) => {
   const formatedtime = timer__formatOutput(seconds);
   timer__clock.innerText = formatedtime;
-  windowtitle.innerText = `${formatedtime} - Timer`;
+  windowtitle.innerText = `${formatedtime} - timer`;
 
   let progress = (100 * timer.remSeconds) / timer.totalSeconds;
   timer__progress.style.width = `${progress}%`;
@@ -94,7 +94,6 @@ const timer__startTimer = () => {
     }, 1000);
 
     timer__timeout = setTimeout(() => {
-      console.log("timeout");
       timer__initTimer();
       timer__setTime(0);
       timer__totalSeconds.innerText = timer__formatOutput(timer.totalSeconds);
@@ -166,7 +165,6 @@ const timer__getFormInput = (event) => {
   timer__resetTimer();
   timer__setTitle(timer.title);
   timer__setTime(timer.totalSeconds);
-  console.log(timer.totalSeconds);
   if (timer.totalSeconds == 0) timer__setBtn(true, true);
   else timer__startTimer();
 };
@@ -178,10 +176,8 @@ const timer__storeTimer = () => {
 //get previous timer from local storage
 const timer__reloadTimer = () => {
   const localTimer = JSON.parse(localStorage.getItem("timer"));
-  console.log(localTimer);
-  console.log(typeof localTimer);
+
   Object.assign(timer, localTimer);
-  console.log(timer);
   if (timer.runFlag) {
     timer__startTimer();
   } else {
