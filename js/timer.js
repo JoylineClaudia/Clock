@@ -65,7 +65,7 @@ const timer__setTime = (seconds) => {
 
   if (progress >= 0 && progress <= 10)
     timer__progress.style.backgroundColor = "#d50000";
-  else if (progress > 10 && progress <= 30)
+  else if (progress > 10 && progress <= 35)
     timer__progress.style.backgroundColor = "#cccc01";
   else timer__progress.style.backgroundColor = "#13ab00";
   timer__storeTimer();
@@ -121,8 +121,8 @@ const timer__resetTimer = () => {
   timer__initTimer();
   timer.remSeconds = timer.totalSeconds;
   timer.runFlag = false;
-
-  timer__setBtn(false, true);
+  if (timer.totalSeconds == 0) timer__setBtn(true, true);
+  else timer__setBtn(false, true);
   timer__setTime(timer.totalSeconds);
 };
 timer__resetBtn.addEventListener("click", timer__resetTimer);
