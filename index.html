@@ -118,31 +118,6 @@
           transform: rotate(5deg);
         }
       }
-      #toggSwitch {
-        position: relative;
-      }
-      #toggSwitch::before {
-        position: absolute;
-        right: 100%;
-        width: 40px;
-        top: -3px;
-        content: "24 Hrs";
-        font-size: 0.8rem;
-      }
-      #toggSwitch::after {
-        position: absolute;
-        left: 100%;
-        width: 40px;
-        top: -3px;
-        content: "12 Hrs";
-        font-size: 0.8rem;
-      }
-      .dark-mode #toggSwitch {
-        color: white;
-      }
-      .dark-mode .toast-body {
-        color: black;
-      }
     </style>
   </head>
   <body>
@@ -441,6 +416,7 @@
 
     <!-- /#sidebar -->
 
+    <script src="js/time.js"></script>
     
     <script> const toggleButton = document.getElementById("toggle-btn"); toggleButton.addEventListener("click", function () { console.log("clocked"); const darkThemeToggle = localStorage.getItem("darkTheme"); if (darkThemeToggle == "true") { localStorage.setItem("darkTheme", "false"); } else { localStorage.setItem("darkTheme", "true"); } checkTheme(); }); window.addEventListener("load", () => { const darkThemeToggle = localStorage.getItem("darkTheme") || localStorage.setItem("darkTheme", "false"); checkTheme(); }); function checkTheme() { const darkThemeToggle = localStorage.getItem("darkTheme") || "false"; if (darkThemeToggle == "true") { document.body.classList.add("dark-mode"); } else { document.body.classList.remove("dark-mode"); } } </script>
     <script src="./js/alarm.js"></script>
