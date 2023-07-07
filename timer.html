@@ -21,6 +21,19 @@
       left: 50%;
       transform: translateX(-50%);
     }
+
+    /* dark mode for modal */
+    body.dark-mode .modal-content {
+      background-color: rgb(13, 13, 13);
+      color: rgb(232, 232, 232);
+    }
+    body.dark-mode .form-control,
+    body.dark-mode.form-select,
+    body.dark-mode .form-control:focus,
+    body.dark-mode .form-select:focus {
+      background-color: rgb(34, 34, 34);
+      color: rgb(232, 232, 232);
+    }
   </style>
 
   <body>
@@ -164,7 +177,7 @@
                   <div class="modal-content">
                     <div class="modal-header bg-primary">
                       <h5 class="modal-title text-white" id="exampleModalLabel">
-                        Set Timer
+                        Edit Alarm
                       </h5>
                       <button
                         type="button"
