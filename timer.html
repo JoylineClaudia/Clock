@@ -24,15 +24,15 @@
 
     /* dark mode for modal */
     body.dark-mode .modal-content {
-      background-color: rgb(13, 13, 13);
-      color: rgb(232, 232, 232);
+      background-color: rgb(13, 13, 13) !important;
+      color: rgb(232, 232, 232) !important;
     }
     body.dark-mode .form-control,
     body.dark-mode .form-select,
     body.dark-mode .form-control:focus,
     body.dark-mode .form-select:focus {
-      background-color: rgb(34, 34, 34);
-      color: rgb(232, 232, 232);
+      background-color: rgb(34, 34, 34) !important;
+      color: rgb(232, 232, 232) !important;
     }
   </style>
 
@@ -77,7 +77,7 @@
                 <a href="index.html" class="nav-link text-white">
                   <i class="bi bi-alarm fs-2"></i>
 
-                  <p>Alarm Clock</p>
+                  <p>Alarm</p>
                 </a>
               </li>
               <li class="active w-100">
@@ -117,13 +117,13 @@
               </div>
 
               <p
-                class="clock-time text-center text-secondary mt-2"
+                class="clock-time text-center text-secondary mt-5 pt-5"
                 style="font-size: 4rem !important"
                 id="timer__displayTitle"></p>
               <p
                 class="clock-time text-center text-secondary mt-2"
                 id="timer__clock"></p>
-              <div class="progress">
+              <div class="progress w-75 mx-auto">
                 <div
                   class="progress-bar"
                   role="progressbar"
