@@ -17,7 +17,7 @@
 
 <body>
 
-    <nav class="navbar bg-primary">
+    <nav class="navbar " style="background-image: linear-gradient(45deg, #413eee, #f70b0b);">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <div class="d-flex">
@@ -29,11 +29,11 @@
 
             <ul class="nav justify-content-end">
 
-                <li class="nav-item fs-5">
-                    <a class="text-white nav-link" href="#">
+                <!-- <li class="nav-item fs-5">
+                    <a class="text-white nav-link" href="holidays.html">
                         Holidays
                     </a>
-                </li>
+                </li> -->
 
 
                 <!-- <li class="nav-item fs-5 dropdown" id="dropdownMenuButton1">
@@ -69,11 +69,11 @@
                         <i class="bi bi-toggle-off fs-4"></i>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link text-white" href="#">
                         <i class="bi bi-gear fs-4"></i>
                     </a>
-                </li>
+                </li> -->
 
             </ul>
         </div>
@@ -93,7 +93,7 @@
                                 <i class="bi bi-alarm fs-2"></i>
 
                                 <p>
-                                    Alarm Clock
+                                    Alarm
                                 </p>
                             </a>
                         </li>
@@ -123,6 +123,13 @@
                                 </p>
                             </a>
                         </li>
+
+                        <li class="w-100">
+                            <a href="holidays.html" class="nav-link text-white">
+                              <i class="bi bi-calendar-event fs-2"></i>
+                              <p>Holidays</p>
+                            </a>
+                          </li>
 
 
                     </ul>
@@ -171,7 +178,7 @@
                         </div> -->
 
                         <div class="d-flex justify-content-center mb-5 ">
-                            <button class=" btn bg-primary mx-3" id="start">Start</button>
+                            <button class="btn bg-primary mx-3" id="start">Start</button>
                             <button class="btn bg-warning mx-3" id="stop" style="display: none;">Pause</button>
                             <button class="btn bg-danger mx-3" id="reset">Reset</button>
                             <button class="btn bg-info mx-3" id="lap" style="display: none;">Lap</button>
@@ -206,7 +213,7 @@
                         </div>
 
                     </div>
-                    <div class="clock-container container bg-white pt-1" style="display: flex;
+                    <div class="clock-container container bg-white pt-1 d-none" style="display: flex;
                         justify-content: center;
                         flex-direction: column;
                         align-content: center;
