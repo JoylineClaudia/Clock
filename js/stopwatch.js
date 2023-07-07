@@ -23,10 +23,70 @@
     var boolReset = boolStop = boolStart = false;
     var items = false;
     var value = {'hours':'00', 'minutes':'00', 'seconds':'00', 'tens':'00'};
+    var oneArray = [];
+    var userLaps = {};
+    var userLapsKey ="";
+    var displayLaps = {};
+    var lapdetails= document.getElementById('lapdetails');
+    var historykeys= document.getElementById('historykeys');
+    var addShowBtn = document.getElementById('addShowBtn');
+    var modalbody = document.getElementById('modalbody');
+    var history = document.getElementById('history')
+    var closeBtns = document.getElementsByClassName('closeBtn')
+    var sount = 1;
   
     function leftPad(value) {
       return value < 10  ? "0" + value : value;
     }
+
+    function callRs() {
+      displayLaps = JSON.parse(localStorage.getItem('userLaps'));
+      while(historykeys.firstChild) {
+        historykeys.removeChild(historykeys.firstChild);
+      }
+    Object.keys(displayLaps).forEach((key) => {
+      
+      if (key != "") {
+        
+        let newOption = document.createElement('option');
+        newOption.innerHTML = key
+        historykeys.appendChild(newOption);
+      }
+    })
+    }
+    
+    Array.from(closeBtns).forEach((btn) => {
+      btn.addEventListener('click', () => {
+        while(history.firstChild) {
+          history.removeChild(history.firstChild);
+        }
+      })
+    })
+
+    addShowBtn.addEventListener('click', () => {
+      console.log('clicked')
+      let result = historykeys.value;
+      // console.log('ress', result);
+      if (result != 'Select Date' && result != null) {
+        while(history.firstChild) {
+          history.removeChild(history.firstChild);
+        }
+        console.log('res', result);
+        let resultdata = JSON.parse(localStorage.getItem('userLaps'))
+        console.log(resultdata);
+        resultdata[result].forEach((ele) => {
+          var items = document.createElement('li');
+          items.innerHTML = ele;
+          history.appendChild(items);
+        })
+        // var items = document.createElement('p');
+        // items.innerHTML = resultdata;
+        // modalbody.appendChild(items)
+      }
+    })
+    // lapdetails.onclick = function() {
+
+    // }
   
     Start.onclick = function() {
       boolStart = true;
@@ -53,8 +113,15 @@
   
     reset.onclick = function() {
       boolReset = true;
+      console.log(oneArray, userLaps)
+      var ss = JSON.parse(localStorage.getItem('userLaps'));
+      // oneArray = [];
+      ss[userLapsKey] = oneArray;
+      oneArray = [];
+      localStorage.setItem( 'userLaps', JSON.stringify(ss));
+      callRs();
       clearInterval(Interval);
-      localStorage.clear('mainTimer')
+      localStorage.removeItem('mainTimer')
       hours = "00";
       minutes = "00";
       seconds = "00";
@@ -63,6 +130,14 @@
       aMinutes.innerHTML = minutes;
       aSeconds.innerHTML = seconds;
       aTens.innerHTML = tens;
+      Laps.innerHTML = "";
+      totalTaps.innerHTML = "";
+      localStorage.removeItem("laps");
+      localStorage.removeItem("totalLaps");
+      localStorage.setItem("lapsLength", 1);
+      content.classList.add("d-none");
+      lapCount = 1;
+      sount = 1;
       document.title = `${minutes}:${seconds} stop watch ⏱`;
     };
   
@@ -225,6 +300,30 @@
         leftDads(lapSeconds) +
         "." +
         leftDads(lapTens);
+
+        var lapsStore = 
+        "Lap " +
+        sount +
+        " – " +
+        leftDads(lapHours) +
+        ":" +
+        leftDads(lapMinutes) +
+        ":" +
+        leftDads(lapSeconds) +
+        "." +
+        leftDads(lapTens);
+        sount++;
+        const now = new Date();
+        const hoursl = now.getHours();
+        const minutesl = now.getMinutes();
+        const secondsl = now.getSeconds();
+        userLapsKey = new Date();
+        console.log(hoursl+":" + minutesl + ":" + secondsl );
+        console.log(oneArray);
+        oneArray.push(lapsStore);
+        
+
+        // localStorage.setItem( userLaps, oneArray);
         
         console.log('ts',totalHours, totalMinutes, totalSeconds)
         totalLap.thours = totalHours;
@@ -251,20 +350,20 @@
       return value < 10  ? "0" + value : value;
     }
    
-    clear.onclick = function() {
-      Laps.innerHTML = "";
-      totalTaps.innerHTML = "";
-      localStorage.removeItem("laps");
-      localStorage.removeItem("totalLaps");
-      localStorage.setItem("lapsLength", 1);
-      content.classList.add("d-none");
-      lapCount = 1;
-    };
+    // clear.onclick = function() {
+    //   Laps.innerHTML = "";
+    //   totalTaps.innerHTML = "";
+    //   localStorage.removeItem("laps");
+    //   localStorage.removeItem("totalLaps");
+    //   localStorage.setItem("lapsLength", 1);
+    //   content.classList.add("d-none");
+    //   lapCount = 1;
+    // };
 
     
     
     window.addEventListener("DOMContentLoaded", function() {
-      
+      callRs();
         if(localStorage.getItem('totalLaps') !== null) {
             let rs = localStorage.getItem('totalLaps').substring(4, 15)
             console.log('r', rs)
