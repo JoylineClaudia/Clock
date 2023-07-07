@@ -232,6 +232,7 @@ function playAlarm() {
   audio.play();
 }
 function snoozeButton() {
+  window.navigator.vibrate(0);
   analogDiv.style.animation = "";
   sound1.style.animation = "";
   sound2.style.animation = "";
