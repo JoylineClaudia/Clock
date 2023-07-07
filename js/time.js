@@ -128,8 +128,6 @@ addTimezoneBtn.addEventListener("click", () => {
       worldClockList.push(timezoneSelector.value);
       localStorage.setItem("worldClock", JSON.stringify(worldClockList));
     }
-    addContainer.classList.add("d-none")
-    body.classList.remove("stop-scroll")
   }
 });
 function initial() {
