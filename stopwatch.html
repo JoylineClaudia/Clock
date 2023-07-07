@@ -129,14 +129,14 @@
 
                 </div>
             </div>
-            <div class="col-sm p-3 min-vh-100 bg-body-tertiary">
+            <div class="col-sm p-3 min-vh-100 bg-body-tertiary" id="clock-container">
                 <!-- content -->
-                <div class=" d-flex align-items-center justify-content-center flex-column" id="clock-container">
+                <div class=" d-flex align-items-center justify-content-center flex-column">
                     <div
                         class="flex-column clock-container align-items-center justify-content-center container bg-white">
                         <div class="d-flex justify-content-end mt-3 w-100 ">
-                            <button class="bg-white border-0 px-2"
-                                onclick="var el = document.getElementById('clock-container'); el.requestFullscreen();">
+
+                            <button class="bg-white border-0 px-2" onclick="toggleFullscreen()">
                                 <i class="bi bi-arrows-fullscreen"></i>
                             </button>
                         </div>
@@ -163,12 +163,48 @@
                                 
                             </div> -->
 
-                        <div class="d-flex justify-content-center mb-5">
+                        <!-- <div class="d-flex justify-content-center mb-5">
                             <button class=" btn bg-primary mx-3" id="start">Start</button>
                             <button class="btn bg-warning mx-3" id="stop" style="display: none;">Pause</button>
                             <button class="btn bg-danger mx-3" id="reset">Reset</button>
                             <button class="btn bg-info mx-3" id="lap" style="display: none;">Lap</button>
+                        </div> -->
+
+                        <div class="d-flex justify-content-center mb-5 ">
+                            <button class=" btn bg-primary mx-3" id="start">Start</button>
+                            <button class="btn bg-warning mx-3" id="stop" style="display: none;">Pause</button>
+                            <button class="btn bg-danger mx-3" id="reset">Reset</button>
+                            <button class="btn bg-info mx-3" id="lap" style="display: none;">Lap</button>
+                            <button type="button" class="btn btn-outline-secondary addbtn mt-4" data-bs-toggle="modal" data-bs-target="#addModal">
+                                Get Previous Laps
+                            </button>
+                            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header bg-primary ">
+                                      <h5 class="modal-title text-white" id="modalTitle">History</h5>
+                                      <button type="button" class="btn-close closeBtn" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body" id="modalbody">
+                                        <form action="" class="add-form" >
+                                            <select name="historykeys" id="historykeys" class="form-select mb-3" aria-label="Default select example">
+                                                <option value="">Select Date</option>
+                                            </select>
+                                        
+                                        </form>
+                                        <ul id="history"></ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn-secondary btn closeBtn" data-bs-dismiss="modal">CLOSE</button>
+                                      <button type="button" class="btn btn-primary" id="addShowBtn">SHOW</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                                                          
+                            <!-- <button class="btn bg-primary mx-3" id="lapdetails">Get Lap Details</button> -->
                         </div>
+
                     </div>
                     <div class="clock-container container bg-white pt-1" style="display: flex;
                         justify-content: center;
@@ -176,7 +212,7 @@
                         align-content: center;
                         align-items: center;" id="content">
 
-                        <button class="btn bg-primary mb-5" id="clear">Clear Laps</button>
+                        <!-- <button class="btn bg-primary mb-5" id="clear">Clear Laps</button> -->
 
                         <div class="laps-container pe-4" style="height: 250px; overflow: scroll; overflow-x: hidden;">
                             <div class="d-flex" style="justify-content: space-evenly;" id="laping">
@@ -185,14 +221,14 @@
                                 <p>&nbsp; &nbsp;Total Time</p>
                             </div>
                             <div class="d-flex all-laps">
-    
+
                                 <ul class="" id="laps"></ul>
                                 <ul class="" id="totalTaps"></ul>
-    
+
                             </div>
                         </div>
 
-                        
+
 
                     </div>
 
@@ -217,6 +253,24 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
     <script src="./js/stopwatch.js"></script>
+
+    <script>
+        var isFullscreen = false;
+        function toggleFullscreen() {
+            var container = document.getElementById("clock-container");
+
+            if (isFullscreen) {
+                document.webkitCancelFullScreen();
+            } else {
+                container.webkitRequestFullScreen();
+            }
+            isFullscreen = !isFullscreen;
+
+            
+        }
+    </script>
 </body>
+
+
 
 </html>
