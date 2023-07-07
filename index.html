@@ -15,7 +15,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
     />
     <style>
-           .scroll {
+      .scroll {
         overflow: auto;
         max-height: 90vh;
         /* for Firefox */
@@ -271,12 +271,13 @@
         </div>
 
         <!-- Content -->
-        <div class="col-sm p-3 min-vh-100 bg-body-tertiary" id="clock-container">
+        <div
+          class="col-sm p-3 min-vh-100 bg-body-tertiary"
+          id="clock-container"
+        >
           <!-- content -->
           <div class="d-flex align-items-center justify-content-center">
-            <div
-              class="clock-container container bg-white"
-            >
+            <div class="clock-container container bg-white">
               <div class="d-flex align-items-center justify-content-end mt-3">
                 <button
                   class="bg-white border-0 px-2"
@@ -290,7 +291,7 @@
                 class="form-check form-switch d-flex justify-content-center mb-2"
               >
                 <input
-                  class="form-check-input"
+                  class="form-check-input mb-5"
                   type="checkbox"
                   role="switch"
                   id="toggSwitch"
@@ -425,8 +426,34 @@
     </div>
 
     <!-- /#sidebar -->
-    
-    <script> const toggleButton = document.getElementById("toggle-btn"); toggleButton.addEventListener("click", function () { console.log("clocked"); const darkThemeToggle = localStorage.getItem("darkTheme"); if (darkThemeToggle == "true") { localStorage.setItem("darkTheme", "false"); } else { localStorage.setItem("darkTheme", "true"); } checkTheme(); }); window.addEventListener("load", () => { const darkThemeToggle = localStorage.getItem("darkTheme") || localStorage.setItem("darkTheme", "false"); checkTheme(); }); function checkTheme() { const darkThemeToggle = localStorage.getItem("darkTheme") || "false"; if (darkThemeToggle == "true") { document.body.classList.add("dark-mode"); } else { document.body.classList.remove("dark-mode"); } } </script>
+
+    <script>
+      const toggleButton = document.getElementById("toggle-btn");
+      toggleButton.addEventListener("click", function () {
+        console.log("clocked");
+        const darkThemeToggle = localStorage.getItem("darkTheme");
+        if (darkThemeToggle == "true") {
+          localStorage.setItem("darkTheme", "false");
+        } else {
+          localStorage.setItem("darkTheme", "true");
+        }
+        checkTheme();
+      });
+      window.addEventListener("load", () => {
+        const darkThemeToggle =
+          localStorage.getItem("darkTheme") ||
+          localStorage.setItem("darkTheme", "false");
+        checkTheme();
+      });
+      function checkTheme() {
+        const darkThemeToggle = localStorage.getItem("darkTheme") || "false";
+        if (darkThemeToggle == "true") {
+          document.body.classList.add("dark-mode");
+        } else {
+          document.body.classList.remove("dark-mode");
+        }
+      }
+    </script>
     <script src="./js/alarm.js"></script>
 
     <script
